@@ -1,71 +1,83 @@
-const { stdin, stdout } = require("node:process");
-const readline=require("node:readline");
-const{stdin:input,stdout:output}=require("node:process");
-const { Console } = require("node:console");
-const { existsSync } = require("node:fs");
-const { resolve } = require("node:path");
+
+//const readline=require("node:readline");
+const ps = require("prompt-sync"); // import the prompt-sync module via npm
+const prompt = ps(); // create promot func
+
+
 let Choix ,a,b;
 
+
+while(Choix!=8){
+    Menu();
+}
+
+
+
+
+
+
+function Menu(){
+    
 console.log("----------------Menu--------------------\n"
-           +"              1 Addition\n"
-            +"              2 Multiplication\n"
-             +"              3 subtraction\n"
-              +"              4 Devided\n"
-               +"              5 puissance\n"
-               +"              6 Root squir\n"
-                +"              7 Factorial\n"
-                +"              8/0 Exit\n"
-               
-                  
+    +"              1 Addition\n"
+     +"             2Multiplication\n"
+      +"              3 subtraction\n"
+       +"              4 Devided\n"
+        +"            5 puissance\n"
+        +"              6 Root squir\n"
+         +"              7 Factorial\n"
+         +"              8/0 Exit\n"
+        
+           
 );
 
 
-const rl=readline.createInterface(input,output)
+Choix=Number(prompt("Enter Your choice: "));
 
 
-rl.question("\n\n Enter Your Choix: ",(userinput)=>{
-    console.log(userinput);
-    Choix=userinput;
-    console.log(Choix);
-   
-    switch(Choix)
+switch(Choix)
 {
-    
-case "1":
-    
-result("Addition",'+',Addition())
+
+case 1:
+input();
+result("Addition","+",Multiplication());
 break;
 
-case "2":
-Multiplication();
+case 2:
+input();
+result("Multiplication","*",Multiplication());
 break;
-case "3":
-Subtraction();
+case 3:
+input();
+result("Subtraction","-",Subtraction());
 break;
-case "4":
-Devided();
+case 4:
+input();
+result("Devided","/",Devided());
 break;
-case "5":
-puissance();
+case 5:
+input();
+result("puissance","**",puissance());
 break;
-case "6":
-rootsquire();
+case 6:
+input();
+result("rootsquire","v-",rootsquire());
 break;
-
-case "7":
-Factorial();
+case 7:
+result("Factorial","n!",Factorial());
 break;
-case "8":
-exist();
+case 8:
+Exit();
 break;
 default:
-    
+
 
 }
+}
 
-rl.close();
-    
-});
+
+
+
 
 function Addition(){
     console.log("**********Addition**************");
@@ -87,21 +99,39 @@ function Devided(){
 }
 function Factorial(){
     console.log("**********Factorial**************");
-    for(i=0;i<a;i++){
+    a=Number(prompt("Enter n! : "));
+    let result=0;
 
+    for (let index = 1; index < a; index++) {
+       
+        result=a**+result;
     }
+
+    return result;
+
 }
 
 function puissance(){
     console.log("********* puissance**************");
+    return Math.pow(a,b);
+
 }
 function rootsquire(){
     console.log("**********root squire**************");
+    return Math.sqrt(a,b);
+
 }
 
-function rootsquire(){
+function Exit(){
     console.log("********** Exit**************");
     console.log("\n\n**********Good By **************\n\n");
+
+}
+
+function  input(){
+   a=Number( prompt("Enter number A :  "));
+   b= Number(prompt("Enter number B  :  "));
+   
 
 }
 
